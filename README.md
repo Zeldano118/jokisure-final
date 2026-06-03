@@ -70,6 +70,14 @@ This systematic approach ensures reliable service delivery while maintaining sec
 - **Feedback System** - Comprehensive review and rating mechanism
 - **Quality Assurance** - Service verification and quality control measures
 
+## CI/CD Pipeline Tech Stack
+
+- Actions: GitHub Actions
+- Deployment: GCP Cloud
+- Database Hosting: Supabase
+- Monitoring & Logging: UptimeRobot
+- Error Alerts: Telegrambot
+
 
 ## Key Differentiators
 
@@ -87,12 +95,15 @@ A comprehensive feedback mechanism enables users to make informed decisions base
 
 ---
 
-## Technology Stack
-
-*Built with cutting-edge technology to ensure the best gaming experience.*
-
 ## Meet The Team
 
+PSO (CI/CD Pipeline) Team
+- **Zeldano Shan Oeffie** – 5026231118
+- **Khayel Josh S.** – 5026231222
+- **Emriqurrizal Yahya Nurramadhan** – 5026231001
+- **Alexander Allan** – 5026231050
+
+PPPL (CRUD Features) Team
 - **Aisya Candra Kirana Dewi** – 5026231002
 - **Kanayya Shafa Amelia** – 5026231003  
 - **Siti Qalimatus Zahra** – 5026231057
