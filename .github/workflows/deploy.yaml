@@ -1,0 +1,65 @@
+name: Deploy JokiSure to GCP Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Copy .env and generate app key
+        run: |
+          cp .env.example .env
+          echo "DB_CONNECTION=pgsql" >> .env
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+          echo "DB_PORT=5432" >> .env
+          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env
+          php artisan config:cache
+
+      - name: Run tests
+        run: php artisan test
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker asia-southeast2-docker.pkg.dev
+
+      - name: Build Docker image
+        run: |
+          docker build -t asia-southeast2-docker.pkg.dev/pso-fp-group4/pso-group4/jokisure:${{ github.sha }} .
+
+      - name: Push Docker image
+        run: |
+          docker push asia-southeast2-docker.pkg.dev/pso-fp-group4/pso-group4/jokisure:${{ github.sha }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy jokisure \
+            --image asia-southeast2-docker.pkg.dev/pso-fp-group4/pso-group4/jokisure:${{ github.sha }} \
+            --region asia-southeast2 \
+            --platform managed \
+            --allow-unauthenticated \
+            --port 8080
