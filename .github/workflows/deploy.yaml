@@ -64,6 +64,7 @@ jobs:
             --allow-unauthenticated \
             --port 8080 \
             --set-env-vars APP_URL=https://jokisure-34050340438.asia-southeast2.run.app \
+            --set-env-vars ASSET_URL=https://jokisure-34050340438.asia-southeast2.run.app \
             --set-env-vars APP_ENV=production \
             --set-env-vars APP_DEBUG=false \
             --set-env-vars DB_CONNECTION=pgsql \
