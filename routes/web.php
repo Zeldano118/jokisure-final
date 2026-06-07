@@ -141,3 +141,5 @@ Route::middleware('auth')->group(function () {
 	Route::get('/favorites/boosts', [UiController::class, 'favoriteBoosts'])->name('favorite.boosts');
 
 });
+
+// Pipeline rebuild trigger
