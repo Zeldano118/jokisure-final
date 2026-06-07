@@ -114,13 +114,11 @@ return [
                 // Cloud Run captures stderr automatically into Cloud Logging.
                 'stream' => 'php://stderr',
             ],
+            'formatter' => \Monolog\Formatter\GoogleCloudFormatter::class,
             'formatter' => JsonFormatter::class,
-            'formatter_with' => [
-                'appendNewline' => true,
-            ],
+            'formatter_with' => [],
             'processors' => [
                 PsrLogMessageProcessor::class,
-                \App\Logging\GcpSeverityProcessor::class, 
             ],
         ],
 
