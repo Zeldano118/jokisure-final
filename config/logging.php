@@ -118,7 +118,10 @@ return [
             'formatter_with' => [
                 'appendNewline' => true,
             ],
-            'processors' => [PsrLogMessageProcessor::class],
+            'processors' => [
+                PsrLogMessageProcessor::class,
+                \App\Logging\GcpSeverityProcessor::class, 
+            ],
         ],
 
         'syslog' => [
