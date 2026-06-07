@@ -67,6 +67,9 @@ jobs:
             --set-env-vars ASSET_URL=https://jokisure-34050340438.asia-southeast2.run.app \
             --set-env-vars APP_ENV=production \
             --set-env-vars APP_DEBUG=false \
+            --set-env-vars LOG_CHANNEL=stack \
+            --set-env-vars LOG_STACK=gcp \
+            --set-env-vars LOG_LEVEL=info \
             --set-env-vars DB_CONNECTION=pgsql \
             --set-env-vars DB_HOST=${{ secrets.DB_HOST }} \
             --set-env-vars DB_PORT=5432 \
