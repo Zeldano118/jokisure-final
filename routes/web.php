@@ -19,11 +19,10 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
-use Illuminate\Support\Facades\Log;
 
-// Test error
-Log::emergency('TES_FATAL_GCP');
-Log::error('TES_ERROR_GCP');
+Route::get('/', function () {
+    fungsiFiktifYangSengajaBikinCrash();
+});
 
 // Show splash at root (public)
 Route::get('/', [UiController::class, 'splash'])->name('welcome');
