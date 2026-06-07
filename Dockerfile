@@ -19,6 +19,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
+RUN rm -f bootstrap/cache/*.php \
+    && php artisan config:clear \
+    && php artisan route:clear
+
+RUN composer install --no-dev --optimize-autoloader
+RUN npm install && npm run build
+
 RUN composer install --no-dev --optimize-autoloader
 
 RUN npm install && npm run build
