@@ -76,4 +76,5 @@ jobs:
             --set-env-vars DB_DATABASE=${{ secrets.DB_DATABASE }} \
             --set-env-vars DB_USERNAME=${{ secrets.DB_USERNAME }} \
             --set-env-vars DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            --set-env-vars LOG_STDERR_FORMATTER=Monolog\Formatter\JsonFormatter \
             --set-env-vars APP_KEY=${{ secrets.APP_KEY }}
