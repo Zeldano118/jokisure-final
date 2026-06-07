@@ -19,6 +19,14 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
+use Illuminate\Support\Facades\Log;
+
+Route::get('/', function () {
+    // Kita suruh Laravel nulis log ERROR secara manual ke channel default ('gcp')
+    Log::error("TES_LOG_MANUAL_WARNA_MERAH: Jika ini masuk, pipa GCP kita sukses!");
+    
+    return "Log manual sudah ditembak! Silakan cek Log Explorer.";
+});
 
 // Show splash at root (public)
 Route::get('/', [UiController::class, 'splash'])->name('welcome');
