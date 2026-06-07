@@ -111,14 +111,21 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'handler' => StreamHandler::class,
             'handler_with' => [
-                // Cloud Run captures stderr automatically into Cloud Logging.
                 'stream' => 'php://stderr',
             ],
-            'formatter' => \Monolog\Formatter\GoogleCloudFormatter::class,
             'formatter' => JsonFormatter::class,
-            'formatter_with' => [],
+            'formatter_with' => [
+                'appendNewline' => true,
+            ],
             'processors' => [
                 PsrLogMessageProcessor::class,
+                function ($record) {
+                    $data = $record->toArray();
+                    
+                    $data['severity'] = $record->level->name; 
+                    
+                    return \Monolog\LogRecord::fromArray($data);
+                },
             ],
         ],
 
