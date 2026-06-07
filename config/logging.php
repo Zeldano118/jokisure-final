@@ -119,16 +119,9 @@ return [
             ],
             'processors' => [
                 PsrLogMessageProcessor::class,
-                function ($record) {
-                    $data = $record->toArray();
-                    
-                    $data['severity'] = $record->level->name; 
-                    
-                    return \Monolog\LogRecord::fromArray($data);
-                },
+                \App\Logging\GcpSeverityProcessor::class, // <-- PAKAI STRING CLASS INI
             ],
         ],
-
         'syslog' => [
             'driver' => 'syslog',
             'level' => env('LOG_LEVEL', 'debug'),
