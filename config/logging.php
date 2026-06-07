@@ -113,14 +113,8 @@ return [
             'handler_with' => [
                 'stream' => 'php://stderr',
             ],
-            'formatter' => JsonFormatter::class,
-            'formatter_with' => [
-                'appendNewline' => true,
-            ],
-            'processors' => [
-                PsrLogMessageProcessor::class,
-                \App\Logging\GcpSeverityProcessor::class, // <-- PAKAI STRING CLASS INI
-            ],
+            // PANGGIL KELAS FORMATTER KITA DI SINI:
+            'formatter' => \App\Logging\GcpJsonFormatter::class,
         ],
         'syslog' => [
             'driver' => 'syslog',
