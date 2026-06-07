@@ -19,18 +19,6 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\NotificationController;
-use Illuminate\Support\Facades\Artisan;
-
-Route::get('/clear-all-cache', function () {
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('cache:clear');
-    return 'Semua cache berhasil dihapus! Sekarang coba tes halaman utama.';
-});
-
-Route::get('/', function () {
-    fungsiFiktifYangSengajaBikinCrash();
-});
 
 // Show splash at root (public)
 Route::get('/', [UiController::class, 'splash'])->name('welcome');
