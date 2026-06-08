@@ -72,7 +72,7 @@
       <div style="background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 16px; border: 1px solid #e9e9e9;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
           <div style="font-weight: 600; font-size: 16px;">Featured Boosters</div>
-          <a href="{{ route('boosters') }}" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #000000; font-size: 12px; font-weight: 500;">
+          <a id="boosters" href="{{ route('boosters') }}" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #000000; font-size: 12px; font-weight: 500;">
 
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -162,7 +162,7 @@
                 $serviceImage = str()->slug($service->game_name) . '.jpg';
               }
             @endphp
-            <a href="{{ route('service.detail.confirm', $service->service_id) }}" data-service-name="{{ $service->service_name ?? '' }}" data-game-name="{{ $service->game_name ?? '' }}" style="display: flex; flex-direction: column; background: #fff; border: 1px solid #e9e9e9; border-radius: 12px; overflow: hidden; text-decoration: none; color: #0a0a0a; transition: all 0.3s ease;">
+            <a id="foryou" href="{{ route('service.detail.confirm', $service->service_id) }}" data-service-name="{{ $service->service_name ?? '' }}" data-game-name="{{ $service->game_name ?? '' }}" style="display: flex; flex-direction: column; background: #fff; border: 1px solid #e9e9e9; border-radius: 12px; overflow: hidden; text-decoration: none; color: #0a0a0a; transition: all 0.3s ease;">
               <div style="position: relative; width: 100%; height: 120px; overflow: hidden; background: #f5f5f5;">
                 <img src="{{ asset('assets/' . $serviceImage) }}" alt="{{ $service->service_desc }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='{{ asset('assets/' . str()->slug($service->game_name) . '.jpg') }}'">
                 <span style="position: absolute; top: 6px; right: 6px; font-size: 9px; padding: 2px 6px; background: #0066cc; color: #fff; border-radius: 4px; font-weight: 500;">Open</span>
