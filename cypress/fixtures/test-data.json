@@ -1,0 +1,72 @@
+{
+  "testUser": {
+    "email": "testuser@example.com",
+    "username": "testuser",
+    "password": "password123",
+    "phone": "081234567890"
+  },
+  "boostRequestData": {
+    "name": "Test Gamer",
+    "email": "testuser@example.com",
+    "phone": "081234567890",
+    "gameUsername": "GameID123",
+    "gamePassword": "GamePass123",
+    "priority": "VIP+ (>6 hours)"
+  },
+  "paymentMethods": [
+    "GoPay",
+    "OVO",
+    "DANA",
+    "ShopeePay",
+    "Credit Card"
+  ],
+  "boostPriorities": [
+    "VIP+ (>6 hours)",
+    "VIP (<6 hours)",
+    "Same Day (1 day)",
+    "Regular (1 - 2 day)"
+  ],
+  "sampleGames": [
+    {
+      "name": "Genshin Impact",
+      "id": "genshin-impact"
+    },
+    {
+      "name": "Valorant",
+      "id": "valorant"
+    },
+    {
+      "name": "League of Legends",
+      "id": "lol"
+    }
+  ],
+  "sampleBoosters": [
+    {
+      "name": "Pro Booster #1",
+      "rating": 4.8,
+      "completedOrders": 150
+    },
+    {
+      "name": "Elite Booster #2",
+      "rating": 4.9,
+      "completedOrders": 200
+    }
+  ],
+  "vouchers": [
+    {
+      "name": "Flash Sale",
+      "discount": "20%",
+      "code": "FLASH20"
+    },
+    {
+      "name": "Member Baru",
+      "discount": "15%",
+      "code": "MEMBER15"
+    },
+    {
+      "name": "Member Loyalty",
+      "discount": "10%",
+      "code": "LOYALTY10"
+    }
+  ]
+}
