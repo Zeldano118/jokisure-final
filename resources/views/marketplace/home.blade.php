@@ -46,14 +46,14 @@
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
           <div style="font-weight: 600; font-size: 16px;">Boost Games</div>
           <a href="{{ route('games.index') }}" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #000000; font-size: 12px; font-weight: 500;">
-             
+
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
         @if($games->count() > 0)
           @foreach ($games->take(6) as $game)
-            <a href="{{ route('games.show', $game->game_id) }}" data-game-name="{{ $game->game_name }}" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e9e9e9; text-decoration: none; color: #0a0a0a; transition: all 0.3s ease;">
+            <a id="game" href="{{ route('games.show', $game->game_id) }}" data-game-name="{{ $game->game_name }}" style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e9e9e9; text-decoration: none; color: #0a0a0a; transition: all 0.3s ease;">
               <div style="width: 100%; height: 100px; overflow: hidden; background: #f5f5f5;">
                 <img src="{{ asset('assets/' . str()->slug($game->game_name) . '.jpg') }}" alt="{{ $game->game_name }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='{{ asset('assets/games-placeholder.jpg') }}'">
               </div>
@@ -73,7 +73,7 @@
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
           <div style="font-weight: 600; font-size: 16px;">Featured Boosters</div>
           <a href="{{ route('boosters') }}" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #000000; font-size: 12px; font-weight: 500;">
-             
+
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -133,7 +133,7 @@
               // Function to match service description with appropriate image
               $serviceImage = 'genshin-impact.jpg'; // default
               $description = strtolower($service->service_desc ?? '');
-              
+
               // Match keywords in description with available images
               if (str_contains($description, 'mondstadt')) {
                 $serviceImage = 'Monstandt.png';
@@ -179,7 +179,7 @@
                     // Match booster name with available profile pictures
                     $boosterImage = 'Tamago.jpg'; // default
                     $boosterName = strtolower($service->booster_name ?? '');
-                    
+
                     if (str_contains($boosterName, 'monkeyd')) {
                       $boosterImage = 'monkeyd.jpg';
                     } elseif (str_contains($boosterName, 'skullface')) {
@@ -253,7 +253,7 @@
       const track = document.getElementById('bannerTrack');
       const offset = -index * 100;
       track.style.transform = `translateX(${offset}%)`;
-      
+
       // Update indicators
       document.querySelectorAll('.banner-indicator').forEach((indicator, i) => {
         if (i === index) {
@@ -264,7 +264,7 @@
           indicator.style.width = '8px';
         }
       });
-      
+
       bannerCurrentIndex = index;
       resetBannerAutoplay();
     }
@@ -312,16 +312,16 @@
       const filter = input.value.toLowerCase().trim();
       const dropdown = document.getElementById('searchDropdown');
       const resultsContainer = document.getElementById('searchResults');
-      
+
       if (filter === '') {
         dropdown.style.display = 'none';
         return;
       }
-      
+
       let results = [];
       const seenGames = new Set();
       const seenBoosters = new Set();
-      
+
       // Search games (deduplicated)
       const gameCards = document.querySelectorAll('[data-game-name]');
       gameCards.forEach(card => {
@@ -336,7 +336,7 @@
           });
         }
       });
-      
+
       // Search boosters (deduplicated)
       const boosterCards = document.querySelectorAll('[data-booster-name]');
       boosterCards.forEach(card => {
@@ -351,7 +351,7 @@
           });
         }
       });
-      
+
       // Search services
       const serviceCards = document.querySelectorAll('[data-service-name]');
       serviceCards.forEach(card => {
@@ -367,7 +367,7 @@
           });
         }
       });
-      
+
       // Display results
       if (results.length === 0) {
         resultsContainer.innerHTML = '<div style="padding: 12px 16px; text-align: center; color: #999; font-size: 12px;">No results found</div>';
@@ -383,10 +383,10 @@
           }
         }).join('');
       }
-      
+
       dropdown.style.display = 'block';
     }
-    
+
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       const searchInput = document.getElementById('homeSearch');
