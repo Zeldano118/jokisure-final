@@ -215,10 +215,10 @@
             <form action="{{ route('cart.add') }}" method="POST" class="mt-2">
               @csrf
               <input type="hidden" name="service_id" value="{{ $service->service_id }}">
-              <button type="submit" class="btn addtocart-btn w-100 fw-semibold">Add To Cart</button>
+              <button id="addToCart" type="submit" class="btn addtocart-btn w-100 fw-semibold">Add To Cart</button>
             </form>
           @else
-            <a id="addToCart" href="/cart" class="btn addtocart-btn w-100 mt-2 fw-semibold text-decoration-none">Add To Cart</a>
+            <a href="/cart" class="btn addtocart-btn w-100 mt-2 fw-semibold text-decoration-none">Add To Cart</a>
           @endif
         </div>
       </div>
