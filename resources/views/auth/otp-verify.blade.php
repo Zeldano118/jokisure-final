@@ -38,7 +38,7 @@
           <p class="text-muted mb-3 small">Check your SMS message. We've sent you the code at
             <span class="text-dark fw-semibold">+62{{ session('signup.data.phone', '********0000') }}</span>
           </p>
-          
+
           @if(session('signup.data'))
             <div class="alert alert-light border small mb-3">
               <div><strong>Username:</strong> {{ session('signup.data.username') }}</div>
@@ -46,7 +46,7 @@
               <div><strong>Phone:</strong> +62{{ session('signup.data.phone') }}</div>
             </div>
           @endif
-          
+
           @if($errors->has('otp'))
             <div class="alert alert-danger small">{{ $errors->first('otp') }}</div>
           @endif
@@ -72,7 +72,7 @@
           <span class="text-muted small">Send code</span>
           <a href="#" class="link-underline small ms-1">again</a>
           <br>
-          <a href="{{ route('otp.demo.verify') }}" class="btn btn-link small mt-2">Demo: verify now (skip OTP)</a>
+          <a href="{{ route('otp.demo.verify') }}" id="demoOTP" class="btn btn-link small mt-2">Demo: verify now (skip OTP)</a>
         </div>
       </div>
 

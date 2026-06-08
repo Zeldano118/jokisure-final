@@ -50,29 +50,29 @@
           <!-- Main Form -->
           <form method="POST" action="{{ route('signup.verify.phone') }}" id="signupForm">
             @csrf
-            
+
             <!-- Username Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-dark" style="font-size: 14px;">Username</label>
-              <input 
-                type="text" 
-                name="username" 
-                value="{{ session('signup.data.username', old('username')) }}" 
-                class="form-control" 
-                placeholder="Enter Your Username" 
+              <input
+                type="text"
+                name="username"
+                value="{{ session('signup.data.username', old('username')) }}"
+                class="form-control"
+                placeholder="Enter Your Username"
                 style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;"
                 required>
             </div>
-            
+
             <!-- Email Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-dark" style="font-size: 14px;">Email</label>
-              <input 
-                type="email" 
-                name="email" 
-                value="{{ session('signup.data.email', old('email')) }}" 
-                class="form-control" 
-                placeholder="Enter Your Email" 
+              <input
+                type="email"
+                name="email"
+                value="{{ session('signup.data.email', old('email')) }}"
+                class="form-control"
+                placeholder="Enter Your Email"
                 style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;"
                 required>
             </div>
@@ -80,11 +80,11 @@
             <!-- Password Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-dark" style="font-size: 14px;">Password</label>
-              <input 
-                type="password" 
-                name="password" 
-                class="form-control" 
-                placeholder="Enter Your Password" 
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter Your Password"
                 style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;"
                 required>
             </div>
@@ -92,11 +92,11 @@
             <!-- Confirm Password Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-dark" style="font-size: 14px;">Confirm Password</label>
-              <input 
-                type="password" 
-                name="password_confirmation" 
-                class="form-control" 
-                placeholder="Confirm Your Password" 
+              <input
+                type="password"
+                name="password_confirmation"
+                class="form-control"
+                placeholder="Confirm Your Password"
                 style="padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;"
                 required>
             </div>
@@ -106,12 +106,12 @@
               <label class="form-label fw-medium text-dark" style="font-size: 14px;">Phone Number</label>
               <div class="input-group">
                 <span class="input-group-text" style="border: 1px solid #ddd; background: white; font-size: 14px;">+62</span>
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  value="{{ session('signup.data.phone', old('phone')) }}" 
-                  class="form-control" 
-                  placeholder="Enter Your Phone Number" 
+                <input
+                  type="tel"
+                  name="phone"
+                  value="{{ session('signup.data.phone', old('phone')) }}"
+                  class="form-control"
+                  placeholder="Enter Your Phone Number"
                   style="border: 1px solid #ddd; font-size: 14px; padding: 12px;"
                   required>
               </div>
@@ -119,9 +119,10 @@
 
             <!-- Verify Phone Number Link -->
             <div class="text-end mb-4">
-              <a 
-                href="javascript:void(0)" 
-                onclick="document.getElementById('signupForm').submit()" 
+              <a
+                id="verifyPhoneLink"
+                href="javascript:void(0)"
+                onclick="document.getElementById('signupForm').submit()"
                 style="color: #ff2d55; font-size: 14px; text-decoration: none; font-weight: 500;">
                 Verify Phone Number
               </a>
@@ -132,24 +133,24 @@
           <!-- Sign Up Form -->
           <form method="POST" action="{{ route('signup.perform') }}" id="finalSignupForm">
             @csrf
-            
+
             <!-- Sign Up Button -->
             @if(session('signup.otp_verified'))
-              <button type="submit" class="btn w-100 mb-4" style="background-color: #ff2d55; color: white; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px;">
+              <button id="signUpButton" type="submit" class="btn w-100 mb-4" style="background-color: #ff2d55; color: white; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px;">
                 Sign Up
               </button>
             @else
-              <button type="button" class="btn w-100 mb-4" disabled style="background-color: #e0e0e0; color: #9e9e9e; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px; cursor: not-allowed;">
+              <button id="signUpButton" type="button" class="btn w-100 mb-4" disabled style="background-color: #e0e0e0; color: #9e9e9e; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px; cursor: not-allowed;">
                 Sign Up
               </button>
             @endif
           </form>
-          
+
           <!-- Terms -->
           <p class="small text-muted text-center" style="font-size: 12px;">
-            By joining, you agree to the 
-            <a href="#" class="text-decoration-none" style="color: #ff2d55;">Terms & Conditions</a> 
-            and 
+            By joining, you agree to the
+            <a href="#" class="text-decoration-none" style="color: #ff2d55;">Terms & Conditions</a>
+            and
             <a href="#" class="text-decoration-none" style="color: #ff2d55;">Privacy Policy</a>
           </p>
         </div>
