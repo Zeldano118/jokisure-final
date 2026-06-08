@@ -217,7 +217,7 @@
               <input type="hidden" name="service_id" value="{{ $service->service_id }}">
               <button id="addToCart" type="submit" class="btn addtocart-btn w-100 fw-semibold">Add To Cart</button>
             </form>
-          @else
+          @else 
             <a href="/cart" class="btn addtocart-btn w-100 mt-2 fw-semibold text-decoration-none">Add To Cart</a>
           @endif
         </div>
