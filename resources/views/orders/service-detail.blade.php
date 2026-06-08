@@ -45,7 +45,7 @@
             $serviceName = strtolower($service->service_name ?? '');
             $serviceDesc = strtolower($service->service_desc ?? '');
             $serviceContent = $serviceName . ' ' . $serviceDesc;
-            
+
             if(str_contains($serviceContent, 'abyss')) {
               $imageName = 'abyss.jpg';
             } elseif(str_contains($serviceContent, 'inazuma')) {
@@ -123,7 +123,7 @@
             $desc = strtolower($service->service_name ?? '');
             $gameDesc = strtolower($service->service_desc ?? '');
           @endphp
-          
+
           @if(str_contains($desc, 'abyss'))
             <ul class="details-list mb-3">
               <li>✅ Completion of Abyss Floors 9–12</li>
@@ -218,7 +218,7 @@
               <button type="submit" class="btn addtocart-btn w-100 fw-semibold">Add To Cart</button>
             </form>
           @else
-            <a href="/cart" class="btn addtocart-btn w-100 mt-2 fw-semibold text-decoration-none">Add To Cart</a>
+            <a id="addToCart" href="/cart" class="btn addtocart-btn w-100 mt-2 fw-semibold text-decoration-none">Add To Cart</a>
           @endif
         </div>
       </div>

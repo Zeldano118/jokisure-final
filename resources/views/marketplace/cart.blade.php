@@ -278,10 +278,10 @@
                 $serviceDesc = $cartItem->service->service_desc ?? '';
                 $descWords = explode(' ', trim($serviceDesc));
                 $firstWord = strtolower($descWords[0] ?? '');
-                
+
                 // List of known image files (without extension)
                 $knownImages = ['dragonspine', 'chasm', 'inazuma', 'liyue', 'monstandt', 'sumeru', 'natlan', 'enkanomiya', 'fontaine', 'abyss', 'childe', 'akevent'];
-                
+
                 // Check if first word matches any known image
                 $imageName = in_array($firstWord, $knownImages) ? $firstWord . '.png' : strtolower(str_replace(' ', '-', $cartItem->service->game->game_name)) . '.jpg';
               @endphp
@@ -297,7 +297,7 @@
                     <form action="{{ route('cart.remove', ['cartId' => $cartItem->cart_id, 'serviceId' => $cartItem->service_id]) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('POST')
-                      <button type="submit" class="remove-btn">Remove</button>
+                      <button id="removeBtn" type="submit" class="remove-btn">Remove</button>
                     </form>
                   </div>
                 </div>
@@ -310,7 +310,7 @@
         <div class="bottom-section">
           <button class="coupon-btn">No Coupons</button>
           <div class="price-display" id="totalPrice">Rp {{ number_format($cartItems->sum(fn($item) => $item->service->service_price), 0, ',', '.') }}</div>
-          <a href="#" onclick="handlePay(event)" class="pay-btn">Pay</a>
+          <a id="payBtn" href="#" onclick="handlePay(event)" class="pay-btn">Pay</a>
         </div>
       @endif
     </div>
@@ -331,7 +331,7 @@
           );
           total += price;
         });
-        
+
         const priceDisplay = document.getElementById('totalPrice');
         priceDisplay.textContent = 'Rp ' + total.toLocaleString('id-ID');
       }
