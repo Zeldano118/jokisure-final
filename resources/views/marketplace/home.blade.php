@@ -217,23 +217,23 @@
 
   <!-- TAB BAR -->
   <nav class="tabbar">
-    <a class="tab active" href="{{ route('home') }}">
+    <a id="homeTab" class="tab active" href="{{ route('home') }}">
       <svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v8a2 2 0 0 1-2 2h-3v-5H8v5H5a2 2 0 0 1-2-2v-8Z"/></svg>
       <span>Home</span>
     </a>
-    <a class="tab" href="{{ route('games.index') }}">
+    <a id="gamesTab" class="tab" href="{{ route('games.index') }}">
       <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2" fill="none"/></svg>
       <span>Explore</span>
     </a>
-    <a class="tab" href="{{ route('chat.index') }}">
+    <a id="chatTab" class="tab" href="{{ route('chat.index') }}">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span>Message</span>
     </a>
-    <a class="tab" href="{{ route('cart.index') }}">
+    <a id="cartTab" class="tab" href="{{ route('cart.index') }}">
       <svg viewBox="0 0 24 24"><path d="M9 2a1 1 0 0 0 0 2h.01a1 1 0 0 0 0-2H9z"/><path d="M5 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5z"/></svg>
       <span>Notification</span>
     </a>
-    <a class="tab" href="{{ route('profile.show') }}">
+    <a id="profileTab" class="tab" href="{{ route('profile.show') }}">
       <svg viewBox="0 0 24 24" class="profile-icon">
         <circle cx="12" cy="12" r="9" fill="none"/>
         <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-6 7a6 6 0 0 1 12 0" fill="none"/>
