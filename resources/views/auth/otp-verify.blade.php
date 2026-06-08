@@ -81,7 +81,7 @@
       <div class="row">
         <div class="col-12 px-4">
           <input type="hidden" name="otp" id="otp-value">
-          <button type="submit" class="btn btn-cta w-100">Verify Code</button>
+          <button id="verifyCode" type="submit" class="btn btn-cta w-100">Verify Code</button>
         </div>
       </div>
       </form>
