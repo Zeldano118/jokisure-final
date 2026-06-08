@@ -52,7 +52,7 @@
           <h1 class="h4 fw-bold mb-3">Login</h1>
 
           @if($errors->any())
-            <div class="alert alert-danger mb-3">
+            <div id="loginErrors" class="alert alert-danger mb-3">
               @foreach($errors->all() as $error)
                 {{ $error }}
               @endforeach
@@ -63,15 +63,15 @@
             @csrf
 
             <label class="form-label mb-1">Email or username</label>
-            <input type="text" name="identity" value="{{ session('reset_identity') ?? old('identity') }}" class="form-control mb-3" placeholder="Enter Your Email or Username" required>
+            <input id="email/username" type="text" name="identity" value="{{ session('reset_identity') ?? old('identity') }}" class="form-control mb-3" placeholder="Enter Your Email or Username" required>
 
             <div class="d-flex align-items-center justify-content-between">
               <label class="form-label mb-1">Password</label>
               <a href="#" onclick="redirectToReset()" class="link-red small text-decoration-none">Forgot your password?</a>
             </div>
-            <input type="password" name="password" class="form-control mb-3" placeholder="Enter Your Password" required>
+            <input id="password" type="password" name="password" class="form-control mb-3" placeholder="Enter Your Password" required>
 
-            <button type="submit" class="btn btn-cta w-100 mb-3">Log In</button>
+            <button id="login" type="submit" class="btn btn-cta w-100 mb-3">Log In</button>
           </form>
 
           <script>

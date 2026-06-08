@@ -38,7 +38,7 @@
     <nav class="navbar navbar-light" style="background-color: #fff; border-bottom: 1px solid #e9e9e9; padding: 12px 16px; position: relative; z-index: 100;">
       <div class="container-fluid" style="padding: 0; display: flex; align-items: center; gap: 12px;">
         <!-- Menu Toggle Button - Sebelah Kiri -->
-        <button class="btn btn-light" type="button" id="menuToggleBtn" style="border: none; padding: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <button id="menuToggleBtn" class="btn btn-light" type="button" style="border: none; padding: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 6h18M3 12h18M3 18h18"/>
           </svg>
@@ -76,7 +76,7 @@
         overflow: hidden !important;
         position: relative !important;
       }
-      
+
       .safe-area {
         position: absolute !important;
         top: var(--status) !important;
@@ -87,7 +87,7 @@
         overflow-x: hidden !important;
         background: #f2f2f2 !important;
       }
-      
+
       /* Navbar fixed at bottom */
       .tabbar {
         position: absolute !important;
@@ -96,25 +96,25 @@
         right: 0 !important;
         z-index: 100 !important;
       }
-      
+
       /* Home indicator */
       .home-indicator {
         position: absolute !important;
         bottom: -20px !important;
         z-index: 101 !important;
       }
-      
+
       /* Sidebar fixed within mobile frame */
       #navbarMenu {
         position: absolute !important;
         z-index: 1000 !important;
       }
-      
+
       #navbarOverlay {
         position: absolute !important;
         z-index: 999 !important;
       }
-      
+
       /* Content area scrollable */
       .container {
         padding-bottom: 20px !important;
@@ -123,7 +123,7 @@
 
     <!-- Sidebar Menu -->
     <div id="navbarMenu" style="position: absolute; top: 0; left: -100%; width: 260px; height: 100%; background: #fff; z-index: 1000; transition: left 0.3s ease; overflow-y: auto; border-top-right-radius: 20px; border-bottom-right-radius: 20px; box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);">
-      
+
       <!-- Close Button -->
       <div style="padding: 40px 16px 16px 16px; display: flex; justify-content: flex-end;">
         <button type="button" onclick="closeNavbarMenu()" style="border: none; background: none; padding: 6px; cursor: pointer; color: #666;">
@@ -139,7 +139,7 @@
         <img src="{{ asset('assets/tamago.jpg') }}" alt="Profile" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; margin-bottom: 8px;">
         <div style="font-size: 16px; font-weight: 700; color: #000; margin-bottom: 2px;">{{ Auth::user()->user_name ?? 'User' }}</div>
         <div style="font-size: 13px; color: #666; margin-bottom: 16px;">{{ Auth::user()->user_email ?? 'user@example.com' }}</div>
-        <button onclick="handleLogout()" style="background: #ff6b6b; color: white; border: none; padding: 8px 24px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
+        <button id="logout" onclick="handleLogout()" style="background: #ff6b6b; color: white; border: none; padding: 8px 24px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer;">
           Log Out
         </button>
       </div>

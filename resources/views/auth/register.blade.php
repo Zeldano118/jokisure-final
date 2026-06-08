@@ -136,7 +136,7 @@
 
             <!-- Sign Up Button -->
             @if(session('signup.otp_verified'))
-              <button id="signUpButton" type="submit" class="btn w-100 mb-4" style="background-color: #ff2d55; color: white; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px;">
+              <button id="signUpButtonVerified" type="submit" class="btn w-100 mb-4" style="background-color: #ff2d55; color: white; padding: 14px; font-weight: 600; border-radius: 8px; border: none; font-size: 16px;">
                 Sign Up
               </button>
             @else
