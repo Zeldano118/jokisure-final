@@ -127,7 +127,7 @@
   // Email validation - real-time
   emailInput.addEventListener('input', function() {
     const email = this.value.trim();
-    
+
     if (email.length > 0 && !email.includes('@')) {
       // Show error
       this.classList.add('is-invalid-custom');
@@ -143,7 +143,7 @@
       emailError.style.display = 'none';
       emailError.textContent = "Please enter a valid email address with '@'";
     }
-    
+
     syncBtn();
   });
 

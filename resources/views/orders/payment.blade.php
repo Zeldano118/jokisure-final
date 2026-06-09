@@ -93,6 +93,7 @@
       <div class="mb-2 fw-semibold">Payment Method</div>
 
       <form method="post" action="{{ route('payment.process') }}">
+        {{-- <form method="get" action="{{ route('payment.success') }}"> --}}
         @csrf
 
         <input type="hidden" name="voucher_id" id="selectedVoucherId" value="">
@@ -131,7 +132,7 @@
 
         <hr class="my-3">
 
-        <button class="btn btn-cta w-100 mt-1" type="submit">Pay</button>
+        <button id="payButton" class="btn btn-cta w-100 mt-1" type="submit">Pay</button>
       </form>
 
     </div>
@@ -158,7 +159,7 @@
 
       <div class="d-flex justify-content-end mt-3">
         <button class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary" onclick="applyVoucher()">Apply</button>
+        <button id="applyVoucher" class="btn btn-primary" onclick="applyVoucher()">Apply</button>
       </div>
 
     </div>
@@ -178,10 +179,10 @@
   document.getElementById('paymentMethodSelect').addEventListener('change', function() {
     const selectedOption = this.options[this.selectedIndex];
     currentAdminFee = parseInt(selectedOption.getAttribute('data-admin-fee')) || 0;
-    
+
     // Update admin fee display
     document.getElementById('adminFeeAmount').innerText = 'Rp ' + currentAdminFee.toLocaleString();
-    
+
     // Recalculate total
     updateTotal();
   });
