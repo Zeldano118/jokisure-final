@@ -253,7 +253,7 @@
                                     <a href="{{ url('/') }}" class="btn-track" onclick="event.stopPropagation()">Joki Again</a>
                                     <a href="{{ route('reviews.create', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Review</a>
                                 @else
-                                    <a href="{{ route('orders.track', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Track Order</a>
+                                    <a id="trackButton" href="{{ route('orders.track', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Track Order</a>
                                 @endif
                             </div>
                         </div>

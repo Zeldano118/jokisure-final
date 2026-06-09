@@ -21,7 +21,7 @@
             pointer-events: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        
+
         .toast-notification.show {
             opacity: 1;
         }
@@ -35,17 +35,17 @@
                 showToast('Failed to copy');
             });
         }
-        
+
         function showToast(message) {
             const toast = document.createElement('div');
             toast.className = 'toast-notification';
             toast.textContent = message;
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 toast.classList.add('show');
             }, 10);
-            
+
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => {
@@ -117,7 +117,7 @@ $item = $order->orderItems->first();
                     {{ $order->created_at ? \Carbon\Carbon::parse($order->created_at)->format('d F Y, H:i') : \Carbon\Carbon::parse($order->order_date)->format('d F Y, H:i') }} WIB
                 </div>
             </div>
-            <i class="bi bi-copy text-dark" style="font-size:1.2rem; cursor:pointer;" onclick="copyOrderId('{{ $order->order_id }}')"></i>
+            <i id="copyIcon" class="bi bi-copy text-dark" style="font-size:1.2rem; cursor:pointer;" onclick="copyOrderId('{{ $order->order_id }}')"></i>
         </div>
     </div>
 
@@ -160,7 +160,7 @@ $item = $order->orderItems->first();
             <div class="flex-grow-1">
                 <div class="fw-bold fs-6">{{ $item->service->booster->user->user_name }}</div>
             </div>
-            <i class="bi bi-chat-dots fs-4 text-dark"></i>
+            <i id="chatIcon" class="bi bi-chat-dots fs-4 text-dark"></i>
         </div>
 
         @if(!str_contains($rawStatus, 'waitlisted'))

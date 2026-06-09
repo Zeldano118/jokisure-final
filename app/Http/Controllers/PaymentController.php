@@ -167,6 +167,6 @@ class PaymentController extends Controller
             return redirect()->route('home')->with('error', 'No order data found');
         }
 
-        return view('payment.success', compact('orderData'));
+        return view('orders/payment-success', compact('orderData'));
     }
 }

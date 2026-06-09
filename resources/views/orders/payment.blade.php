@@ -93,7 +93,6 @@
       <div class="mb-2 fw-semibold">Payment Method</div>
 
       <form method="post" action="{{ route('payment.process') }}">
-        {{-- <form method="get" action="{{ route('payment.success') }}"> --}}
         @csrf
 
         <input type="hidden" name="voucher_id" id="selectedVoucherId" value="">
@@ -174,6 +173,19 @@
   let availableVouchers = [];
   const basePrice = {{ $subtotal }};
   let currentAdminFee = 0;
+
+// Form validation on submit
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const paymentMethodSelect = document.getElementById('paymentMethodSelect');
+
+    // Check if a valid payment method is selected
+    if (!paymentMethodSelect.value || paymentMethodSelect.selectedIndex === 0) {
+      e.preventDefault();
+      alert('Please select a payment method');
+      paymentMethodSelect.focus();
+      return false;
+    }
+  });
 
   // Update total when payment method changes
   document.getElementById('paymentMethodSelect').addEventListener('change', function() {

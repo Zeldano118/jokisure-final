@@ -139,7 +139,7 @@
             pointer-events: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        
+
         .toast-notification.show {
             opacity: 1;
         }
@@ -155,19 +155,19 @@
                 showToast('Failed to copy');
             });
         }
-        
+
         function showToast(message) {
             // Create toast element
             const toast = document.createElement('div');
             toast.className = 'toast-notification';
             toast.textContent = message;
             document.body.appendChild(toast);
-            
+
             // Show toast with animation
             setTimeout(() => {
                 toast.classList.add('show');
             }, 10);
-            
+
             // Hide and remove after 2 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
@@ -214,7 +214,7 @@
             <div class="mb-2">
                 <div class="fw-bold fs-5 mb-1">
                     Order ID: #{{ Str::substr($order->order_id, 0, 8) }}
-                    <i class="bi bi-copy text-muted ms-2" style="font-size:0.7em; cursor:pointer;" onclick="copyOrderId('{{ $order->order_id }}')"></i>
+                    <i id="copyIcon" class="bi bi-copy text-muted ms-2" style="font-size:0.7em; cursor:pointer;" onclick="copyOrderId('{{ $order->order_id }}')"></i>
                 </div>
                 <div class="text-muted small">
                     {{ \Carbon\Carbon::parse($order->order_date)->format('d F Y, H:i') }} WIB
@@ -229,7 +229,7 @@
                     <div class="fw-bold text-dark">{{ $item->service->booster->user->user_name }}</div>
                 </div>
                 <a href="{{ route('chat.show', $item->service->booster->user->user_id) }}" class="text-decoration-none">
-                    <i class="bi bi-chat-dots fs-4 text-dark"></i>
+                    <i id="chatIcon" class="bi bi-chat-dots fs-4 text-dark"></i>
                 </a>
             </div>
 
@@ -239,7 +239,7 @@
                 @php
                     // Get service-specific image based on content
                     $serviceContent = strtolower(($item->service->service_name ?? '') . ' ' . ($item->service->service_desc ?? ''));
-                    
+
                     if (str_contains($serviceContent, 'abyss')) {
                         $imageName = 'abyss.jpg';
                     } elseif (str_contains($serviceContent, 'natlan')) {
@@ -313,8 +313,8 @@
 
         <div class="bottom-action-bar">
             @if (str_contains($rawStatus, 'waitlist'))
-                <button class="btn-custom btn-gray">Track Order</button>
-                <button class="btn-custom btn-gray">Complete Order</button>
+                <button id="trackOrder" class="btn-custom btn-gray">Track Order</button>
+                <button id="completeOrder" class="btn-custom btn-gray">Complete Order</button>
 
             @elseif(str_contains($rawStatus, 'pending'))
                 <a href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
