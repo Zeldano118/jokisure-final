@@ -317,19 +317,19 @@
                 <button id="completeOrder" class="btn-custom btn-gray">Complete Order</button>
 
             @elseif(str_contains($rawStatus, 'pending'))
-                <a href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
-                <button class="btn-custom btn-gray">Complete Order</button>
+                <a id="trackOrder" href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
+                <button id="completeOrder" class="btn-custom btn-gray">Complete Order</button>
 
             @elseif(str_contains($rawStatus, 'progress'))
-                <a href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
+                <a id="trackOrder" href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
                 <form action="{{ route('orders.complete', $order->order_id) }}" method="POST" style="flex: 1;">
                     @csrf
-                    <button type="submit" class="btn-custom btn-blue w-100">Complete Order</button>
+                    <button id="completeOrder" type="submit" class="btn-custom btn-blue w-100">Complete Order</button>
                 </form>
 
             @elseif(str_contains($rawStatus, 'completed'))
-                <a href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
-                <a href="{{ route('reviews.create', $order->order_id) }}" class="btn-custom btn-yellow">Review</a>
+                <a id="trackOrder" href="{{ route('orders.track', $order->order_id) }}" class="btn-custom btn-pink">Track Order</a>
+                <a id="createReview" href="{{ route('reviews.create', $order->order_id) }}" class="btn-custom btn-yellow">Review</a>
             @endif
         </div>
 

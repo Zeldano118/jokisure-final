@@ -250,8 +250,8 @@
 
                             <div class="d-flex gap-2">
                                 @if($isCompleted)
-                                    <a href="{{ url('/') }}" class="btn-track" onclick="event.stopPropagation()">Joki Again</a>
-                                    <a href="{{ route('reviews.create', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Review</a>
+                                    <a id="jokiAgainButton" href="{{ url('/') }}" class="btn-track" onclick="event.stopPropagation()">Joki Again</a>
+                                    <a id="createReview" href="{{ route('reviews.create', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Review</a>
                                 @else
                                     <a id="trackButton" href="{{ route('orders.track', $order->order_id) }}" class="btn-track" onclick="event.stopPropagation()">Track Order</a>
                                 @endif
