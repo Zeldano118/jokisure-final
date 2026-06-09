@@ -134,7 +134,6 @@ describe('JokiSure Homepage & Marketplace', () => {
         cy.get('#menuToggleBtn', { timeout: 90000 }).click({force: true});
         cy.get('#contactMenu', { timeout: 90000 }).click({force: true});
         cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/legal/contact');
-        cy.go('back');
     });
   });
 
@@ -143,12 +142,11 @@ describe('JokiSure Homepage & Marketplace', () => {
         cy.get('#menuToggleBtn', { timeout: 90000 }).click({force: true});
         cy.get('#contactMenu', { timeout: 90000 }).click({force: true});
         cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/legal/contact');
-        cy.go('back');
 
-        cy.get('#name').type('Test User');
-        cy.get('#email').type('testuser@example.com');
-        cy.get('#subject').type('Test Subject');
-        cy.get('#message').type('Test Message');
+        cy.get('#nameInput').type('Test User');
+        cy.get('#emailInput').type('testuser@example.com');
+        cy.get('#subjectInput').type('Test Subject');
+        cy.get('#messageInput').type('Test Message');
         cy.get('#submitBtn').should('be.visible');
     });
   });

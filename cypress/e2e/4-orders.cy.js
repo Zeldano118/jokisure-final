@@ -28,7 +28,6 @@ describe('JokiSure Order Management & Tracking', () => {
             cy.get('#tab-btn-all').click();
             // Click on an order to view details
             cy.get('.order-card-new', { timeout: 90000 }).first().click({ force: true });
-            cy.go('back');
         });
     });
 
@@ -43,7 +42,6 @@ describe('JokiSure Order Management & Tracking', () => {
             cy.get('#copyIcon').click({ force: true });
             cy.get('#chatIcon').click({ force: true });
             cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/chat');
-            cy.go('back');
         });
 
   });
@@ -58,7 +56,6 @@ describe('JokiSure Order Management & Tracking', () => {
             // Test copy order ID functionality
             cy.get('#copyIcon').click({ force: true });
             cy.get('#chatIcon', { timeout: 90000 }).click({ force: true });
-            cy.go('back');
         });
     });
 
