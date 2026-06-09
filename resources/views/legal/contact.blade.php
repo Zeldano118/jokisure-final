@@ -164,7 +164,7 @@
 
     <div class="contact-form">
         <h2 style="margin: 0 0 20px 0; text-align: center; color: #0a0a0a;">Send us a Message</h2>
-        
+
         <form action="#" method="POST">
             @csrf
             <div class="form-group">
@@ -187,7 +187,7 @@
                 <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us how we can help you..."></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button id="submitBtn" type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
 </div>
