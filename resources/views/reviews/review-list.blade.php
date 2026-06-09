@@ -148,12 +148,12 @@
 </style>
 
 <div style="padding: 20px 16px; background: #f8f9fa; min-height: calc(100vh - 60px); padding-bottom: 100px;">
-    
+
     {{-- Demo Mode Notice --}}
     <div class="demo-notice">
         <strong>Demo Mode:</strong> Click "Mark Complete" to change order status for testing review functionality.
     </div>
-    
+
     @if($completedOrders->isEmpty())
         <div class="empty-review">
             <div class="empty-review-icon">📋</div>
@@ -170,14 +170,14 @@
                 @php
                     $item = $order->orderItems->first();
                     if (!$item) continue;
-                    
+
                     $service = $item->service;
                     $game = $service->game;
-                    
+
                     // Determine service image based on service description
                     $serviceImage = 'genshin boss.png'; // default
                     $serviceName = strtolower($service->service_desc ?? '');
-                    
+
                     if (str_contains($serviceName, 'natlan')) {
                         $serviceImage = 'Natlan.png';
                     } elseif (str_contains($serviceName, 'inazuma')) {
@@ -202,7 +202,7 @@
                         $serviceImage = 'abyss.jpg';
                     }
                 @endphp
-                
+
                 <!-- Review Item -->
                 <div class="review-item">
                     <img src="{{ asset('assets/' . $serviceImage) }}" class="review-item-image" alt="{{ $service->service_name }}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22%3E%3Crect fill=%22%23f0f0f0%22 width=%2270%22 height=%2270%22/%3E%3C/svg%3E'">
@@ -211,7 +211,7 @@
                         <div class="review-item-title">{{ $game->game_name }} - {{ $service->service_name }}</div>
                         <div class="review-item-variant">Variant: {{ $service->service_desc ?? 'Standard' }}</div>
                         <div class="review-item-status">Status: <span style="font-weight: 600;">{{ $order->orderStatus->order_status_name }}</span></div>
-                        
+
                         <!-- Rating Stars -->
                         <div class="review-item-rating">
                             @for($i = 1; $i <= 5; $i++)
@@ -245,7 +245,7 @@
                                 </div>
                             @elseif($order->orderStatus->order_status_name === 'Completed')
                                 <!-- Write Review Button -->
-                                <a href="{{ route('reviews.create', $order->order_id) }}" class="review-btn">Write Review</a>
+                                <a id="writeReviewButton" href="{{ route('reviews.create', $order->order_id) }}" class="review-btn">Write Review</a>
                             @else
                                 <!-- Mark as Complete Button (Demo) -->
                                 <form action="{{ route('orders.mark-complete', $order->order_id) }}" method="POST" style="margin: 0; margin-bottom: 8px;">
@@ -261,7 +261,7 @@
             @endforeach
         </div>
     @endif
-    
+
 </div>
 
 <style>
@@ -270,7 +270,7 @@
         .device-frame {
             overflow: hidden !important;
         }
-        
+
         .safe-area {
             position: absolute !important;
             top: 0 !important;
@@ -280,7 +280,7 @@
             overflow-y: auto !important;
             -webkit-overflow-scrolling: touch !important;
         }
-        
+
         .navbar {
             position: fixed !important;
             bottom: 0 !important;

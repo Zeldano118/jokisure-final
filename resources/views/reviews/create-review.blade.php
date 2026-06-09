@@ -248,11 +248,11 @@
         @php
             $service = $item->service;
             $game = $service->game;
-            
+
             // Determine service image
             $serviceImage = 'genshin boss.png';
             $serviceName = strtolower($service->service_desc ?? '');
-            
+
             if (str_contains($serviceName, 'natlan')) {
                 $serviceImage = 'Natlan.png';
             } elseif (str_contains($serviceName, 'inazuma')) {
@@ -296,7 +296,7 @@
                 <label class="rating-label">Rating</label>
                 <div class="rating-stars" id="ratingStars">
                     @for($i = 1; $i <= 5; $i++)
-                        <button type="button" class="rating-star" data-rating="{{ $i }}" onclick="setRating({{ $i }}, event)">
+                        <button id="star-{{ $i }}" type="button" class="rating-star" data-rating="{{ $i }}" onclick="setRating({{ $i }}, event)">
                             <svg viewBox="0 0 24 24" fill="#FFD700" stroke="none">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                             </svg>
@@ -309,7 +309,7 @@
             <!-- Review Text Section -->
             <div class="form-section">
                 <label class="form-label">Write your review</label>
-                <textarea class="form-textarea" name="user_review" placeholder="Your Review" required></textarea>
+                <textarea id="userReview" class="form-textarea" name="user_review" placeholder="Your Review" required></textarea>
             </div>
 
             <!-- Photos Section -->
@@ -325,7 +325,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="submit-btn">Send Review</button>
+            <button id="submitReview" type="submit" class="submit-btn">Send Review</button>
         </form>
     </div>
 </div>
@@ -337,7 +337,7 @@
         event.preventDefault();
         selectedRating = rating;
         document.getElementById('rating').value = rating;
-        
+
         // Update star visual state
         document.querySelectorAll('.rating-star').forEach((star, index) => {
             if (index < rating) {
