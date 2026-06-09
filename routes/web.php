@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Log;
 Route::get('/', function () {
     // Kita suruh Laravel nulis log ERROR secara manual ke channel default ('gcp')
     Log::error("TES_LOG_MANUAL_WARNA_MERAH: Jika ini masuk, pipa GCP kita sukses!");
-    
+
     return "Log manual sudah ditembak! Silakan cek Log Explorer.";
 });
 
@@ -96,21 +96,21 @@ Route::middleware('auth')->group(function () {
 	// ORDERS & TRANSACTIONS (Dynamic via OrderController)
 	Route::get('/boost/request', [UiController::class,'boostRequest'])->name('boost.request');
 	Route::post('/boost/request', [UiController::class,'storeBoostRequest'])->name('boost.request.store');
-	
+
 	// PAYMENT ROUTES (PaymentController)
 	Route::get('/payment', [PaymentController::class,'index'])->name('payment');
 	Route::post('/payment', [PaymentController::class,'process'])->name('payment.process');
 	Route::get('/payment/success', [PaymentController::class,'success'])->name('payment.success');
-	
+
 	// ORDER CREATION
 	Route::get('/orders/create', [OrderController::class, 'createOrder'])->name('orders.create');
-	
+
 	// Order listing and detail (dynamic - no status-specific static routes needed)
 	Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 	Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 	Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 	Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.update.status');
-	
+
 	// Order tracking (dynamic - returns appropriate track view based on status)
 	Route::get('/track/{order}', [TrackOrderController::class, 'track'])->name('orders.track');
 	Route::post('/track/{order}/events', [OrderController::class, 'addEvent'])->name('orders.track.event.store');
@@ -140,6 +140,9 @@ Route::middleware('auth')->group(function () {
 	Route::get('/favorites/boosters', [UiController::class, 'favoriteBoosters'])->name('favorite.boosters');
 	Route::get('/favorites/boosts', [UiController::class, 'favoriteBoosts'])->name('favorite.boosts');
 
+    // LEGAL ROUTES
+    Route::view('/legal/terms', 'legal.terms')->name('legal.terms');
+    Route::view('/legal/contact', 'legal.contact')->name('legal.contact');
 });
 
 // Pipeline rebuild trigger
