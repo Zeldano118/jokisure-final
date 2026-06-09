@@ -100,7 +100,7 @@ describe('JokiSure Homepage & Marketplace', () => {
   });
 
   describe('Sidebar', () => {
-    it('should sidebar successfully', () => {
+    it('should display sidebar successfully', () => {
         cy.get('#menuToggleBtn').click({force: true});
         cy.get('#accountMenu', { timeout: 90000 }).click({force: true});
         cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/profile');
@@ -128,13 +128,28 @@ describe('JokiSure Homepage & Marketplace', () => {
 
         cy.get('#menuToggleBtn', { timeout: 90000 }).click({force: true});
         cy.get('#termsMenu', { timeout: 90000 }).click({force: true});
-        cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/notifications');
+        cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/legal/terms');
         cy.go('back');
 
         cy.get('#menuToggleBtn', { timeout: 90000 }).click({force: true});
         cy.get('#contactMenu', { timeout: 90000 }).click({force: true});
-        cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/chat');
+        cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/legal/contact');
         cy.go('back');
+    });
+  });
+
+  describe('Contact Menu', () => {
+    it('should display contact menu successfully', () => {
+        cy.get('#menuToggleBtn', { timeout: 90000 }).click({force: true});
+        cy.get('#contactMenu', { timeout: 90000 }).click({force: true});
+        cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/legal/contact');
+        cy.go('back');
+
+        cy.get('#name').type('Test User');
+        cy.get('#email').type('testuser@example.com');
+        cy.get('#subject').type('Test Subject');
+        cy.get('#message').type('Test Message');
+        cy.get('#submitBtn').should('be.visible');
     });
   });
 });
