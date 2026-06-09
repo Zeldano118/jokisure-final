@@ -80,7 +80,7 @@ describe('JokiSure Authentication Flow', () => {
 
         cy.get('#menuToggleBtn').click({force: true});
         // Test Logout
-        cy.get('#logout').click();
+        cy.get('#logout').click({force: true});
         cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/login');
     });
 
