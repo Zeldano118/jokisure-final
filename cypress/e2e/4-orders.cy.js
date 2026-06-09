@@ -60,6 +60,24 @@ describe('JokiSure Order Management & Tracking', () => {
             cy.go('back');
         });
     });
+
+    describe('Reviews Page', () => {
+        it('should load reviews page successfully', () => {
+            cy.visit('https://jokisure-34050340438.asia-southeast2.run.app/reviews');
+            cy.get('#writeReviewButton', { timeout: 90000 }).first().click({ force: true });
+
+            // Test star ratings
+            cy.get('#star-1', { timeout: 90000 }).click({ force: true });
+            cy.get('#star-2', { timeout: 90000 }).click({ force: true });
+            cy.get('#star-3', { timeout: 90000 }).click({ force: true });
+            cy.get('#star-4', { timeout: 90000 }).click({ force: true });
+            cy.get('#star-5', { timeout: 90000 }).click({ force: true });
+
+            cy.get('#userReview', { timeout: 90000 }).type('This is a sample review.');
+
+            cy.get('#submitReview', { timeout: 90000 }).should('be.visible');
+        });
+    });
 });
 
 
