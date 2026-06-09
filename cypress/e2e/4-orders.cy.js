@@ -37,7 +37,7 @@ describe('JokiSure Order Management & Tracking', () => {
             cy.visit('https://jokisure-34050340438.asia-southeast2.run.app/orders');
             cy.get('.order-card-new', { timeout: 90000 }).first().click({ force: true });
             cy.get("#trackOrder", { timeout: 90000 }).should('exist').scrollIntoView();
-            cy.get("#completeOrder", { timeout: 90000 }).should('exist').scrollIntoView();
+            cy.get("#createReview", { timeout: 90000 }).should('exist').scrollIntoView();
 
             // Test copy order ID functionality
             cy.get('#copyIcon').click({ force: true });
@@ -51,7 +51,8 @@ describe('JokiSure Order Management & Tracking', () => {
     describe('Track Orders', () => {
         it('should load tracking page successfully', () => {
             cy.visit('https://jokisure-34050340438.asia-southeast2.run.app/orders');
-            cy.get('#trackButton', { timeout: 90000 }).first().click({ force: true });
+            cy.get('.order-card-new', { timeout: 90000 }).first().click({ force: true });
+            cy.get('#trackOrder', { timeout: 90000 }).first().click({ force: true });
             cy.url({ timeout: 900000 }).should('include', 'https://jokisure-34050340438.asia-southeast2.run.app/track');
 
             // Test copy order ID functionality
