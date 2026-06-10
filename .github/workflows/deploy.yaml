@@ -33,8 +33,13 @@ jobs:
           echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env
           php artisan config:cache
 
-      - name: Run tests
-        run: echo "Tests skipped for now"
+      - name: Run Cypress tests
+        run: |
+          npm ci
+          npm run dev > /tmp/dev.log 2>&1 &
+          sleep 5
+          npm run test  # Runs all .cy.js files sequentially by default
+          kill %1 || true
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
