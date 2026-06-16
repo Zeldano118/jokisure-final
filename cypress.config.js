@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import registerCodeCoverageTasks from '@cypress/code-coverage/task';
 
 export default defineConfig({
   allowCypressEnv: false, // Keeping your setting from the second block
@@ -9,6 +10,8 @@ export default defineConfig({
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
+        registerCodeCoverageTasks(on, config);
+        return config;
     },
   },
 });

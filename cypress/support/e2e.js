@@ -6,6 +6,8 @@
 // Import commands.js
 import './commands'
 
+import '@cypress/code-coverage/support';
+
 // Disable uncaught exception handling for 404s
 Cypress.on('uncaught:exception', (err, runnable) => {
   // Return false to prevent Cypress from failing the test

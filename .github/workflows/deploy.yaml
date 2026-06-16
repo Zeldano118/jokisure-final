@@ -41,6 +41,9 @@ jobs:
           npm run test  # Runs all .cy.js files sequentially by default
           kill %1 || true
 
+      - name: Print Coverage Summary
+        run: npx nyc report --reporter=text-summary
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:

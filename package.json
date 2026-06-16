@@ -10,6 +10,7 @@
         "test": "cypress run --headless --browser chrome"
     },
     "devDependencies": {
+        "@cypress/code-coverage": "^4.0.3",
         "@tailwindcss/vite": "^4.0.0",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
