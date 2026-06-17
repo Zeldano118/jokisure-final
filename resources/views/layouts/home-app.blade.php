@@ -16,9 +16,6 @@
 
   <!-- Page CSS -->
   <link href="{{ asset('css/my-profile.css') }}" rel="stylesheet">
-
-  <!-- Dark Mode -->
-  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
 </head>
 
 <body class="preview-center">
@@ -40,16 +37,19 @@
     <!-- Home Navbar -->
     <nav class="navbar navbar-light" style="background-color: #fff; border-bottom: 1px solid #e9e9e9; padding: 12px 16px; position: relative; z-index: 100;">
       <div class="container-fluid" style="padding: 0; display: flex; align-items: center; gap: 12px;">
+        <!-- Menu Toggle Button - Sebelah Kiri -->
         <button id="menuToggleBtn" class="btn btn-light" type="button" style="border: none; padding: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 6h18M3 12h18M3 18h18"/>
           </svg>
         </button>
 
+        <!-- Logo -->
         <a class="navbar-brand" href="{{ route('home') }}" style="margin: 0; display: flex; align-items: center; flex-shrink: 0;">
           <img src="{{ asset('assets/logo.png') }}" alt="JokiSure" height="30">
         </a>
 
+        <!-- Search Bar -->
         <div style="flex-grow: 1; max-width: 200px; position: relative;">
           <input type="text" id="homeSearch" class="form-control rounded-pill" placeholder="Search..." style="height: 30px; font-size: 12px;" oninput="filterHomeContent()">
           <div id="searchDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e9e9e9; border-top: none; border-radius: 0 0 12px 12px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -57,6 +57,7 @@
           </div>
         </div>
 
+        <!-- Cart Icon -->
         <a href="{{ route('cart.index') }}" class="position-relative" style="text-decoration: none; color: #0a0a0a; flex-shrink: 0; margin-left: auto;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -66,13 +67,16 @@
       </div>
     </nav>
 
+    <!-- Overlay Menu Modal -->
     <div id="navbarOverlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; display: none;" onclick="closeNavbarMenu()"></div>
 
     <style>
+      /* Reset and fix mobile layout structure */
       .device-frame {
         overflow: hidden !important;
         position: relative !important;
       }
+
       .safe-area {
         position: absolute !important;
         top: var(--status) !important;
@@ -83,6 +87,8 @@
         overflow-x: hidden !important;
         background: #f2f2f2 !important;
       }
+
+      /* Navbar fixed at bottom */
       .tabbar {
         position: absolute !important;
         bottom: 0 !important;
@@ -90,25 +96,35 @@
         right: 0 !important;
         z-index: 100 !important;
       }
+
+      /* Home indicator */
       .home-indicator {
         position: absolute !important;
         bottom: -20px !important;
         z-index: 101 !important;
       }
+
+      /* Sidebar fixed within mobile frame */
       #navbarMenu {
         position: absolute !important;
         z-index: 1000 !important;
       }
+
       #navbarOverlay {
         position: absolute !important;
         z-index: 999 !important;
       }
+
+      /* Content area scrollable */
       .container {
         padding-bottom: 20px !important;
       }
     </style>
 
+    <!-- Sidebar Menu -->
     <div id="navbarMenu" style="position: absolute; top: 0; left: -100%; width: 260px; height: 100%; background: #fff; z-index: 1000; transition: left 0.3s ease; overflow-y: auto; border-top-right-radius: 20px; border-bottom-right-radius: 20px; box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);">
+
+      <!-- Close Button -->
       <div style="padding: 40px 16px 16px 16px; display: flex; justify-content: flex-end;">
         <button type="button" onclick="closeNavbarMenu()" style="border: none; background: none; padding: 6px; cursor: pointer; color: #666;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -117,6 +133,7 @@
         </button>
       </div>
 
+      <!-- User Profile Section -->
       @auth
       <div style="padding: 0 16px 20px 16px; text-align: center;">
         <img src="{{ asset('assets/tamago.jpg') }}" alt="Profile" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; margin-bottom: 8px;">
@@ -128,43 +145,68 @@
       </div>
       @endauth
 
+      <!-- Main Menu Items -->
       <div style="padding: 0 16px;">
         <div id="accountMenu" onclick="window.location.href='{{ route('profile.show') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Account</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="boostersMenu" onclick="window.location.href='{{ route('boosters') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Boosters</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div onclick="window.location.href='{{ route('games.index') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Games</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="ordersMenu" onclick="window.location.href='{{ route('orders') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">My Orders</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="reviewsMenu" onclick="window.location.href='{{ route('reviews') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Review</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="settingsMenu" onclick="window.location.href='{{ route('profile.edit') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Settings</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="termsMenu" onclick="window.location.href='{{ route('legal.terms') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Terms of Service</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
+
         <div id="contactMenu" onclick="window.location.href='{{ route('legal.contact') }}'; closeNavbarMenu();" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s;">
           <span style="font-size: 14px; font-weight: 500; color: #000;">Contact Us</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
         </div>
       </div>
     </div>
 
     <style>
+      /* Hover effects for menu items */
       #navbarMenu div[onclick]:hover {
         background: #e9ecef !important;
         transform: translateY(-1px);
@@ -207,6 +249,7 @@
         }
       }
 
+      // Close menu when pressing Escape key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           closeNavbarMenu();
@@ -251,31 +294,6 @@
   <div class="home-indicator"></div>
 </main>
 
-<!-- Dark Mode Toggle -->
-<button class="dark-toggle" onclick="toggleDark()" id="darkToggleBtn">
-  <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-  </svg>
-</button>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  function toggleDark() {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    localStorage.setItem('darkMode', isDark);
-    const icon = document.getElementById('darkIcon');
-    if (isDark) {
-      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-    } else {
-      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-    }
-  }
-  if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark');
-    const icon = document.getElementById('darkIcon');
-    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-  }
-</script>
 </body>
 </html>
