@@ -186,3 +186,71 @@ body.dark .dark-toggle {
     left: calc(50% + 130px);
   }
 }
+
+/* Auth pages specific overrides */
+body.dark .header,
+body.dark .header-bottom {
+  background-color: #1a1a1a !important;
+}
+
+body.dark .form-label {
+  color: #e0e0e0 !important;
+}
+
+body.dark .text-dark {
+  color: #e0e0e0 !important;
+}
+
+body.dark .btn-social {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark .input-group-text {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark .otp-input {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark .link-underline {
+  color: #7CABD4 !important;
+}
+
+body.dark .btn-back svg path {
+  stroke: #e0e0e0 !important;
+}
+
+body.dark button:disabled,
+body.dark .btn:disabled {
+  background-color: #2a2a2a !important;
+  color: #666 !important;
+}
+
+/* Universal Status Bar SVG icons visibility in dark mode */
+body.dark .status-bar svg rect,
+body.dark .status-bar svg path {
+  fill: #e0e0e0 !important;
+}
+body.dark .status-bar svg [stroke] {
+  stroke: #e0e0e0 !important;
+}
+body.dark .status-bar svg [fill="none"] {
+  fill: none !important;
+}
+
+/* Force dark style on autofilled inputs in dark mode */
+body.dark input:-webkit-autofill,
+body.dark input:-webkit-autofill:hover,
+body.dark input:-webkit-autofill:focus,
+body.dark input:-webkit-autofill:active {
+  -webkit-text-fill-color: #e0e0e0 !important;
+  -webkit-box-shadow: 0 0 0 1000px #2a2a2a inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
