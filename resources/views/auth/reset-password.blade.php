@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JokiSure • Reset Password</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}">
-  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}?v={{ filemtime(public_path('css/reset-password.css')) }}">
+  <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
 </head>
 <body class="preview-center">

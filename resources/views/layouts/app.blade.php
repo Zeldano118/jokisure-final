@@ -15,10 +15,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <!-- Page CSS -->
-  <link href="{{ asset('css/my-profile.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/my-profile.css') }}?v={{ filemtime(public_path('css/my-profile.css')) }}" rel="stylesheet">
 
   <!-- Dark Mode -->
-  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet">
 
   {{-- Extra styles per-page --}}
   @stack('styles')

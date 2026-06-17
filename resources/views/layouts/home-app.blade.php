@@ -15,10 +15,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Page CSS -->
-  <link href="{{ asset('css/my-profile.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/my-profile.css') }}?v={{ filemtime(public_path('css/my-profile.css')) }}" rel="stylesheet">
 
   <!-- Dark Mode -->
-  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet">
 </head>
 
 <body class="preview-center">

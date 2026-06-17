@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JokiSure • Sign Up</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ asset('css/signup.css') }}">
-  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/signup.css') }}?v={{ filemtime(public_path('css/signup.css')) }}">
+  <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
 </head>
 <body class="preview-center">
@@ -59,7 +59,7 @@
 
             <!-- Username Field -->
             <div class="mb-3">
-              <label class="form-label fw-medium text-dark" style="font-size: 14px;">Username</label>
+              <label class="form-label fw-medium" style="font-size: 14px;">Username</label>
               <input
                 type="text"
                 name="username"
@@ -72,7 +72,7 @@
 
             <!-- Email Field -->
             <div class="mb-3">
-              <label class="form-label fw-medium text-dark" style="font-size: 14px;">Email</label>
+              <label class="form-label fw-medium" style="font-size: 14px;">Email</label>
               <input
                 type="email"
                 name="email"
@@ -85,7 +85,7 @@
 
             <!-- Password Field -->
             <div class="mb-3">
-              <label class="form-label fw-medium text-dark" style="font-size: 14px;">Password</label>
+              <label class="form-label fw-medium" style="font-size: 14px;">Password</label>
               <input
                 type="password"
                 name="password"
@@ -97,7 +97,7 @@
 
             <!-- Confirm Password Field -->
             <div class="mb-3">
-              <label class="form-label fw-medium text-dark" style="font-size: 14px;">Confirm Password</label>
+              <label class="form-label fw-medium" style="font-size: 14px;">Confirm Password</label>
               <input
                 type="password"
                 name="password_confirmation"
@@ -109,7 +109,7 @@
 
             <!-- Phone Number Field -->
             <div class="mb-3">
-              <label class="form-label fw-medium text-dark" style="font-size: 14px;">Phone Number</label>
+              <label class="form-label fw-medium" style="font-size: 14px;">Phone Number</label>
               <div class="input-group">
                 <span class="input-group-text" style="border: 1px solid #ddd; background: white; font-size: 14px;">+62</span>
                 <input
