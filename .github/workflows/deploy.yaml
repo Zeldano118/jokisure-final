@@ -36,9 +36,10 @@ jobs:
       - name: Run Cypress tests
         run: |
           npm ci
-          npm run dev > /tmp/dev.log 2>&1 &
-          sleep 5
-          npm run test  # Runs all .cy.js files sequentially by default
+          npm run build -- --mode test
+          php artisan serve --port=8000 &
+          sleep 3
+          npm run test -- --config baseUrl=http://127.0.0.1:8000
           kill %1 || true
 
       - name: Print Coverage Summary
