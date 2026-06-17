@@ -38,8 +38,9 @@ jobs:
           npm ci
           npm run build -- --mode test
           php artisan serve --port=8000 &
-          sleep 3
+          sleep 5
           npm run test -- --config baseUrl=http://127.0.0.1:8000
+          sleep 3
           kill %1 || true
 
       - name: Print Coverage Summary
