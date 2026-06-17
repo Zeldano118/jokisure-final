@@ -6,8 +6,13 @@
   <title>Order Detail • On-Progress</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{ asset('css/order-detail.css') }}" rel="stylesheet">
+  <!-- Dark Mode -->
+  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
 </head>
 <body class="preview-center">
+<script>
+  if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark');
+</script>
 <main class="device-frame">
   <div class="status-bar d-flex align-items-center justify-content-between px-3">
     <div>9:41</div>
@@ -97,5 +102,26 @@
   <div class="home-indicator"></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Dark Mode Toggle -->
+<button class="dark-toggle" onclick="toggleDark()" id="darkToggleBtn">
+  <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+<script>
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('darkMode', isDark);
+    const icon = document.getElementById('darkIcon');
+    icon.innerHTML = isDark
+      ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+      : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+  if (localStorage.getItem('darkMode') === 'true') {
+    const i = document.getElementById('darkIcon');
+    if (i) i.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+</script>
 </body>
 </html>
