@@ -17,6 +17,9 @@
   <!-- Page CSS -->
   <link href="{{ asset('css/my-profile.css') }}" rel="stylesheet">
 
+  <!-- Dark Mode -->
+  <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet">
+
   {{-- Extra styles per-page --}}
   @stack('styles')
 </head>
@@ -40,11 +43,10 @@
     <!-- APP BAR -->
     @unless (View::hasSection('hide-appbar'))
       <div class="appbar d-flex align-items-center justify-content-between px-3" style="padding: 12px 16px 10px;">
-        {{-- Back button --}}
         @php
-          $backUrl = 'javascript:history.back()'; // Default behavior
+          $backUrl = 'javascript:history.back()';
           if (Route::currentRouteName() === 'boosters') {
-            $backUrl = route('home'); // For boosters page, go to home
+            $backUrl = route('home');
           }
         @endphp
         <a href="{{ $backUrl }}" class="back-btn" style="text-decoration: none; color: #000000; display: flex; align-items: center;">
@@ -53,10 +55,8 @@
           </svg>
         </a>
 
-        {{-- Title (pakai appbar-title biar konsisten dengan halaman lain) --}}
         <div style="flex: 1; font-weight: 700; font-size: 1.25rem; margin-left: 12px;">@yield('title', 'JokiSure')</div>
 
-        {{-- Help button (buka overlay) --}}
         <button type="button" class="icon-btn" aria-label="Help" onclick="openHelpOverlay()" style="border: none; background: none; padding: 0; cursor: pointer; color: #999; flex-shrink: 0;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
@@ -127,6 +127,31 @@
   <div class="home-indicator"></div>
 </main>
 
+<!-- Dark Mode Toggle -->
+<button class="dark-toggle" onclick="toggleDark()" id="darkToggleBtn">
+  <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('darkMode', isDark);
+    const icon = document.getElementById('darkIcon');
+    if (isDark) {
+      icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    } else {
+      icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    }
+  }
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark');
+    const icon = document.getElementById('darkIcon');
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+</script>
 </body>
 </html>

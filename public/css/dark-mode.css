@@ -1,0 +1,188 @@
+/* ── DARK MODE GLOBAL OVERRIDE ── */
+body.dark {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark .device-frame {
+  background-color: #1a1a1a !important;
+}
+
+body.dark .status-bar,
+body.dark .appbar,
+body.dark .tabbar {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark .tabbar a,
+body.dark .appbar a,
+body.dark .back-btn {
+  color: #e0e0e0 !important;
+}
+
+body.dark .tabbar .tab.active {
+  color: #e74c3c !important;
+}
+
+body.dark .tabbar .tab.active svg path,
+body.dark .tabbar .tab.active svg circle {
+  stroke: #e74c3c !important;
+}
+
+body.dark .card,
+body.dark .content-wrap,
+body.dark .safe-area {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+}
+
+/* Home navbar */
+body.dark .navbar {
+  background-color: #1e1e1e !important;
+  border-bottom-color: #333 !important;
+}
+
+body.dark .navbar input {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark .navbar input::placeholder {
+  color: #888 !important;
+}
+
+body.dark .navbar svg {
+  stroke: #e0e0e0 !important;
+}
+
+/* Hamburger menu button */
+body.dark #menuToggleBtn {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark #menuToggleBtn svg {
+  stroke: #e0e0e0 !important;
+}
+
+/* Section cards */
+body.dark .rounded,
+body.dark [class*="rounded"],
+body.dark [style*="background: #fff"],
+body.dark [style*="background:#fff"],
+body.dark [style*="background: white"],
+body.dark [style*="background-color: white"],
+body.dark [style*="background-color: #fff"] {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark [style*="background: #f2f2f2"],
+body.dark [style*="background:#f2f2f2"] {
+  background-color: #1a1a1a !important;
+}
+
+body.dark [style*="background: #f8f9fa"],
+body.dark [style*="background:#f8f9fa"] {
+  background-color: #2a2a2a !important;
+}
+
+body.dark [style*="border: 1px solid #e9ecef"],
+body.dark [style*="border-bottom: 1px solid #e9e9e9"] {
+  border-color: #444 !important;
+}
+
+/* White outlines -> red */
+body.dark [style*="border: 1px solid #e9e9e9"],
+body.dark [style*="border: 2px solid"],
+body.dark .border {
+  border-color: #e74c3c !important;
+}
+
+/* Section titles */
+body.dark h1, body.dark h2, body.dark h3,
+body.dark h4, body.dark h5, body.dark h6 {
+  color: #e0e0e0 !important;
+}
+
+body.dark .form-control {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.dark .form-control::placeholder {
+  color: #888 !important;
+}
+
+body.dark .btn-outline-secondary {
+  color: #e0e0e0 !important;
+  border-color: #555 !important;
+}
+
+body.dark a {
+  color: #7CABD4 !important;
+}
+
+body.dark .text-muted {
+  color: #aaa !important;
+}
+
+body.dark .header {
+  background-color: #1e1e1e !important;
+}
+
+/* Sidebar menu */
+body.dark #navbarMenu {
+  background-color: #1e1e1e !important;
+}
+
+body.dark #navbarMenu div[onclick] {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+}
+
+body.dark #navbarMenu span {
+  color: #e0e0e0 !important;
+}
+
+/* User name & email in sidebar */
+body.dark #navbarMenu div[style*="font-size: 16px"],
+body.dark #navbarMenu div[style*="font-size: 13px"] {
+  color: #e0e0e0 !important;
+}
+
+/* Toggle button */
+.dark-toggle {
+  position: fixed;
+  bottom: 100px;
+  right: 16px;
+  z-index: 9999;
+  background: #333;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #fff;
+}
+
+body.dark .dark-toggle {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* Reposition toggle inside device frame on desktop view */
+@media (min-width: 600px) {
+  .dark-toggle {
+    right: auto;
+    left: calc(50% + 130px);
+  }
+}
