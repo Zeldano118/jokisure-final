@@ -75,7 +75,7 @@ describe('JokiSure Boost Request & Payment Flow', () => {
       cy.get('#paymentMethodSelect').select('DANA');
 
       cy.get('#paymentMethodSelect').select('GoPay');
-      cy.get('#paymentMethodSelect').should('have.value', '26888402-cdb3-4f11-a82f-b5a038a9048c'); // GoPay UUID
+      cy.get('#paymentMethodSelect').should('have.value', 'd9d6bf97-1f22-47ae-8865-36bb7de0e302'); // GoPay UUID
 
       // Admin fees
       cy.get('#paymentMethodSelect').select('GoPay');
@@ -85,7 +85,7 @@ describe('JokiSure Boost Request & Payment Flow', () => {
 
       // Voucher modal
       cy.get('[data-bs-target="#voucherModal"]', { timeout: 900000 }).click();
-      cy.get('#voucher_47fb9e96-4c07-4e76-87b9-39e1fc36b948', { timeout: 900000 }).click(); // Voucher_(Flash Sale 20% UUI)
+      cy.get('#voucher_633a99dc-e388-434d-9a4e-2183e5b7ce78', { timeout: 900000 }).click(); // Voucher_(Flash Sale 20% UUI)
       cy.get('#applyVoucher', { timeout: 900000 }).click();
       // Discount should be applied
       cy.get('[role="main"]').should('contain', 'Rp');
