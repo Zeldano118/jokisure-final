@@ -12,11 +12,11 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
 
     istanbul({
-      include: 'resources/js/*',
-      exclude: ['node_modules', 'tests/'],
-      extension: ['.js', '.ts', '.vue', '.jsx', '.tsx'],
-      requireEnv: false,
-      forceBuildInstrument: mode === 'test',
-    }),
+        include: ['resources/js/**/*'],
+        exclude: ['node_modules', 'tests/**'],
+        extension: ['.js', '.ts', '.vue', '.jsx', '.tsx'],
+        requireEnv: false,
+        forceBuildInstrument: mode === 'test',
+    })
   ],
 }));

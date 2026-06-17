@@ -1,12 +1,14 @@
 {
-  "all": false,
+  "all": true,
   "include": [
-    "**/resources/js/**"
+    "resources/js/**/*.js",
+    "resources/js/**/*.vue",
+    "resources/js/**/*.ts"
   ],
   "exclude": [
-    "**/node_modules/**",
-    "**/public/build/**",
-    "**/tests/**"
+    "node_modules/**",
+    "public/build/**",
+    "tests/**"
   ],
   "reporter": [
     "text-summary",

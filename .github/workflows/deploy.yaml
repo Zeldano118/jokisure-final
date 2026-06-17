@@ -36,6 +36,9 @@ jobs:
           php artisan config:cache
 
       - name: Run Cypress tests
+        env:
+          VITE_COVERAGE: 'true'
+          CYPRESS_COVERAGE: 'true'
         run: |
           npm ci
           npm run build -- --mode test
