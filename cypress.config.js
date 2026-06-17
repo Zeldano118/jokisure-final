@@ -2,16 +2,22 @@ import { defineConfig } from "cypress";
 import registerCodeCoverageTasks from '@cypress/code-coverage/task';
 
 export default defineConfig({
-  allowCypressEnv: false, // Keeping your setting from the second block
+  allowCypressEnv: false,
 
   e2e: {
-    pageLoadTimeout: 100000, // Now Cypress will actually see this!
-    chromeWebSecurity: false, // Added this just in case a security block is causing the infinite hang
+    pageLoadTimeout: 100000,
+    chromeWebSecurity: false,
+    baseUrl: 'http://127.0.0.1:8000',
 
     setupNodeEvents(on, config) {
-      // implement node event listeners here
-        registerCodeCoverageTasks(on, config);
-        return config;
+      registerCodeCoverageTasks(on, config);
+
+      // Log coverage data collection events
+      on('after:screenshot', () => {
+        console.log('After screenshot - coverage data should be available');
+      });
+
+      return config;
     },
   },
 });
