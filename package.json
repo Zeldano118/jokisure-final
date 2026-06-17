@@ -7,7 +7,7 @@
         "dev": "vite",
         "cy:open": "cypress open",
         "cy:run": "cypress run",
-        "test": "cypress run --headless --browser chrome"
+        "test": "NODE_ENV=test cypress run --headless --browser chrome"
     },
     "devDependencies": {
         "@cypress/code-coverage": "^4.0.3",
