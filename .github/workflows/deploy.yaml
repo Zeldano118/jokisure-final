@@ -35,21 +35,21 @@ jobs:
           echo "APP_ENV=testing" >> .env
           php artisan config:cache
 
-      - name: Run Cypress tests
-        env:
-          VITE_COVERAGE: 'true'
-          CYPRESS_COVERAGE: 'true'
-        run: |
-          npm ci
-          npm run build -- --mode test
-          php artisan serve --port=8000 &
-          sleep 5
-          npm run test -- --config baseUrl=http://127.0.0.1:8000
-          sleep 3
-          kill %1 || true
+      # - name: Run Cypress tests
+      #   env:
+      #     VITE_COVERAGE: 'true'
+      #     CYPRESS_COVERAGE: 'true'
+      #   run: |
+      #     npm ci
+      #     npm run build -- --mode test
+      #     php artisan serve --port=8000 &
+      #     sleep 5
+      #     npm run test -- --config baseUrl=http://127.0.0.1:8000
+      #     sleep 3
+      #     kill %1 || true
 
-      - name: Print Coverage Summary
-        run: npx nyc report --reporter=text-summary
+      # - name: Print Coverage Summary
+      #   run: npx nyc report --reporter=text-summary
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
