@@ -128,11 +128,11 @@
 </main>
 
 <!-- Dark Mode Toggle -->
-{{-- <button class="dark-toggle" onclick="toggleDark()" id="darkToggleBtn">
+<button class="dark-toggle" onclick="toggleDark()" id="darkToggleBtn">
   <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
   </svg>
-</button> --}}
+</button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>

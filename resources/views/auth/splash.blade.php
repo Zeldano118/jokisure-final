@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <!-- CSS kamu -->
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v={{ filemtime(public_path('css/styles.css')) }}">
-  {{-- <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet"> --}}
+  <link href="{{ asset('css/dark-mode.css') }}?v={{ filemtime(public_path('css/dark-mode.css')) }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
 
   <style>
@@ -22,11 +22,11 @@
   </style>
 </head>
 <body class="preview-center">
-  {{-- <script>
+  <script>
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark');
     }
-  </script> --}}
+  </script>
   <main id="splash" class="device-frame" role="main" aria-label="Mobile splash preview" tabindex="0">
     <!-- Status bar (mock iOS) -->
     <div class="status-bar d-flex align-items-center justify-content-between px-3">
@@ -83,7 +83,7 @@
   </script>
 
   <!-- Dark Mode Toggle -->
-  {{-- <button class="dark-toggle" onclick="toggleDark(event)" id="darkToggleBtn">
+  <button class="dark-toggle" onclick="toggleDark(event)" id="darkToggleBtn">
     <svg id="darkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
@@ -108,6 +108,6 @@
         icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
       }
     }
-  </script> --}}
+  </script>
 </body>
 </html>
