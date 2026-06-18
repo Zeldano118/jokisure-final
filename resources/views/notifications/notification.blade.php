@@ -1,5 +1,5 @@
 <!-- 5026231003 | Kanayya Shafa Amelia (kanayya shafa) -->
- 
+
 @extends('layouts.app')
 
 @section('title', 'Notifications')
@@ -26,7 +26,7 @@
 @section('content')
 <div class="notification-page">
   <!-- Notification List -->
-  <div class="notification-list">
+  <div class="notification-list card">
     @foreach($notifications as $notification)
     <div class="notification-item {{ $notification['is_read'] ? 'read' : 'unread' }}">
       <div class="notification-icon">
@@ -53,7 +53,7 @@
         </svg>
       </div>
     </a>
-    
+
     <div class="order-status-card">
       <div class="order-image">
         <img src="{{ asset('assets/' . $orderStatus['image']) }}" alt="order image" onerror="console.log('Order image failed to load: {{ asset('assets/' . $orderStatus['image']) }}')">
@@ -80,6 +80,8 @@
 .notification-list {
   background: #fff;
   margin-bottom: 12px;
+  border: 1px solid #e5e5e7;
+  border-radius: 8px;
 }
 
 .notification-item {

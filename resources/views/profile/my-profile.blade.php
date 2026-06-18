@@ -17,7 +17,7 @@
 @section('appbar-right')
   <!-- Gear polos -->
   <a href="#" class="gear-btn" aria-label="Settings">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
+    <svg class="pencil-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/>
       <path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2.1-1.6-2-3.4-2.6 1a7.5 7.5 0 0 0-2.6-1.5l-.4-2.8H10l-.4 2.8c-.9.3-1.8.8-2.6 1.5l-2.6-1-2 3.4 2.1 1.6a7.6 7.6 0 0 0 0 3L2.4 15l2 3.4 2.6-1a7.5 7.5 0 0 0 2.6 1.5l.4 2.8h4.2l.4-2.8c.9-.3 1.8-.8 2.6-1.5l2.6 1 2-3.4-2.1-1.5Z"/>
     </svg>
